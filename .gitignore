@@ -1,0 +1,23 @@
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Local editor
+.vscode/
+.idea/
+
+# Dataset files
+data/
+
+# Model weights and checkpoints
+checkpoints/
+
+# Temporary files
+*.log
+.ipynb_checkpoints/
+
+# Keep results images and source code tracked
