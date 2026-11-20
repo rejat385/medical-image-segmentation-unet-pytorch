@@ -6,12 +6,12 @@ __pycache__/
 venv/
 .env
 
+# data
+data/kvasir-seg.zip
+
 # Local editor
 .vscode/
 .idea/
-
-# Dataset files
-data/
 
 # Model weights and checkpoints
 checkpoints/
