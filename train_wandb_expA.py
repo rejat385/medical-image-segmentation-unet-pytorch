@@ -169,14 +169,30 @@ def main():
                 "lr": current_lr
             })
 
-            wandb.add_file(str(CHECKPOINT_DIR / "unet_expA_best.pth"))
-
             print(
                 f"Epoch {epoch+1:02d} | "
                 f"Train loss: {train_loss:.4f} | "
                 f"Val Dice: {val_dice:.4f} | "
                 f"LR: {current_lr:.6f}"
             )
+
+        artifact = wandb.Artifact(
+            name="unet-best-model-expA",
+            type="model",
+            metadata={
+                "best_val_dice": best_dice,
+                "best_epoch": best_epoch,
+                "architecture": "U-Net",
+                "dataset": "Kvasir-SEG"
+            }
+        )
+
+        artifact.add_file(
+            str(CHECKPOINT_DIR / "unet_expA_best.pth")
+        )
+        artifact.add_file(
+            str(CHECKPOINT_DIR / "split_indices.pt")
+        )
 
         print("\nExperiment A finished")
         print(f"Best epoch: {best_epoch}")
@@ -189,8 +205,8 @@ def main():
             val_dice=history["val_dice"],
             learning_rate=history["learning_rate"]
         )
-        wandb.add_file(str(RESULTS_DIR / "experiment_A_history.pth"))
-
+        artifact.add_file(str(RESULTS_DIR / "experiment_A_history.pth"))
+        wandb.log_artifact(artifact)
         wandb.run.summary["best_val_dice"] = best_dice
         wandb.run.summary["best_epoch"] = best_epoch
 
