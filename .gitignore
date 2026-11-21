@@ -6,6 +6,9 @@ __pycache__/
 venv/
 .env
 
+# Test .py files
+compare.py
+
 # data
 data/kvasir-seg.zip
 
