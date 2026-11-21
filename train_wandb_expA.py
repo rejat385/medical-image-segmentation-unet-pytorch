@@ -205,7 +205,7 @@ def main():
             val_dice=history["val_dice"],
             learning_rate=history["learning_rate"]
         )
-        artifact.add_file(str(RESULTS_DIR / "experiment_A_history.pth"))
+        artifact.add_file(str(RESULTS_DIR / "experiment_A_history.npz"))
         wandb.log_artifact(artifact)
         wandb.run.summary["best_val_dice"] = best_dice
         wandb.run.summary["best_epoch"] = best_epoch
