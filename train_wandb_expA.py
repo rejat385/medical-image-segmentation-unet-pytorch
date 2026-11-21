@@ -168,7 +168,9 @@ def main():
                 "val/best_dice": best_dice,
                 "lr": current_lr
             })
-            
+
+            wandb.add_file(str(CHECKPOINT_DIR / "unet_expA_best.pth"))
+
             print(
                 f"Epoch {epoch+1:02d} | "
                 f"Train loss: {train_loss:.4f} | "
@@ -182,11 +184,12 @@ def main():
 
         # 7. Save results
         np.savez(
-            "results/experiment_A_history.npz",
+            RESULTS_DIR / "experiment_A_history.npz",
             train_loss=history["train_loss"],
             val_dice=history["val_dice"],
             learning_rate=history["learning_rate"]
         )
+        wandb.add_file(str(RESULTS_DIR / "experiment_A_history.pth"))
 
         wandb.run.summary["best_val_dice"] = best_dice
         wandb.run.summary["best_epoch"] = best_epoch
