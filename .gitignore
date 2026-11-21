@@ -17,7 +17,7 @@ data/kvasir-seg.zip
 .idea/
 
 # Model weights and checkpoints
-checkpoints/
+checkpoints/unet_best.pth
 
 # Temporary files
 *.log

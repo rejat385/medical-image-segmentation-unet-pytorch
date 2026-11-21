@@ -151,6 +151,14 @@ def main():
                     CHECKPOINT_DIR / "unet_expA_best.pth"
                 )
 
+            # Adjust learning rate based on validation
+            scheduler.step(val_dice)
+            current_lr = optimizer.param_groups[0]["lr"]
+            
+            history["train_loss"].append(train_loss)
+            history["val_dice"].append(val_dice)
+            history["learning_rate"].append(current_lr)
+
             wandb.log({
                 "epoch": epoch + 1,
                 "train/total_loss": train_loss,
@@ -160,15 +168,7 @@ def main():
                 "val/best_dice": best_dice,
                 "lr": current_lr
             })
-
-            # Adjust learning rate based on validation
-            scheduler.step(val_dice)
-            current_lr = optimizer.param_groups[0]["lr"]
             
-            history["train_loss"].append(train_loss)
-            history["val_dice"].append(val_dice)
-            history["learning_rate"].append(current_lr)
-
             print(
                 f"Epoch {epoch+1:02d} | "
                 f"Train loss: {train_loss:.4f} | "
