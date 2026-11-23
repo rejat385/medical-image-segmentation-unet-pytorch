@@ -40,7 +40,7 @@ config = {
     "optimizer": "Adam",
     "loss": "BCE + Dice",
     "LR_Scheduler": "ReduceLROnPlateau",
-    "Augmentation": "ROT, HP, VP"
+    "Augmentation": "ROT, HF, VF"
 }
 
     
