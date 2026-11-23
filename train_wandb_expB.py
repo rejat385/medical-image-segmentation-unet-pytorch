@@ -39,7 +39,8 @@ config = {
     "image_size": 128,
     "optimizer": "Adam",
     "loss": "BCE + Dice",
-    "LR_Scheduler": "ReduceLROnPlateau"
+    "LR_Scheduler": "ReduceLROnPlateau",
+    "Augmentation": "ROT, HP, VP"
 }
 
     
