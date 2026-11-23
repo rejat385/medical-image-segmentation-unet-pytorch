@@ -47,7 +47,7 @@ def main():
     # tell wandb to get started
     with wandb.init(project="medical-image-segmentation-unet-pytorch", name="unet-expA", config=config):      
 
-        dataset = PolypDataset(size=128)
+        dataset = PolypDataset(size=128, augment=False)
 
         splits = torch.load(
             "checkpoints/split_indices.pt",

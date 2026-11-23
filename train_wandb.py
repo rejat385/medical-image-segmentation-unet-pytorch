@@ -81,7 +81,7 @@ def main():
     # tell wandb to get started
     with wandb.init(project="medical-image-segmentation-unet-pytorch", name="unet-baseline", config=config):      
 
-        dataset = PolypDataset(size=128)
+        dataset = PolypDataset(size=128, augment=False)
 
         train_set, val_set, test_set = random_split(
             dataset,

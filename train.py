@@ -49,7 +49,7 @@ def dice_score(logits, targets, smooth=1e-6):
 
 
 def main():
-    dataset = PolypDataset(size=128)
+    dataset = PolypDataset(size=128, augment=False)
 
     train_set, val_set, test_set = random_split(
         dataset,

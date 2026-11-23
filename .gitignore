@@ -23,4 +23,10 @@ checkpoints/unet*
 *.log
 .ipynb_checkpoints/
 
+# test files in results
+results/aug*
+
+#wandb
+wandb/
+
 # Keep results images and source code tracked
